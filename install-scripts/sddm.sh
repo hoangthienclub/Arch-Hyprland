@@ -64,19 +64,19 @@ while [ "$valid_input" != true ]; do
     printf "\n%s - Installing Simple SDDM Theme\n" "${NOTE}"
 
     # Check if /usr/share/sddm/themes/simple-sddm-2 exists and remove if it does
-    if [ -d "/usr/share/sddm/themes/simple-sddm-2" ]; then
-      sudo rm -rf "/usr/share/sddm/themes/simple-sddm-2"
-      echo -e "\e[1A\e[K${OK} - Removed existing 'simple-sddm-2' directory." 2>&1 | tee -a "$LOG"
+    if [ -d "/usr/share/sddm/themes/sddm-astronaut-theme" ]; then
+      sudo rm -rf "/usr/share/sddm/themes/sddm-astronaut-theme"
+      echo -e "\e[1A\e[K${OK} - Removed existing 'sddm-astronaut-theme' directory." 2>&1 | tee -a "$LOG"
     fi
 
-    # Check if simple-sddm-2 directory exists in the current directory and remove if it does
-    if [ -d "simple-sddm-2" ]; then
-      rm -rf "simple-sddm-2"
-      echo -e "\e[1A\e[K${OK} - Removed existing 'simple-sddm-2' directory from the current location." 2>&1 | tee -a "$LOG"
+    # Check if sddm-astronaut-theme directory exists in the current directory and remove if it does
+    if [ -d "sddm-astronaut-theme" ]; then
+      rm -rf "sddm-astronaut-theme"
+      echo -e "\e[1A\e[K${OK} - Removed existing 'sddm-astronaut-theme' directory from the current location." 2>&1 | tee -a "$LOG"
     fi
 
-    if git clone --depth 1 https://github.com/JaKooLit/simple-sddm-2.git; then
-      while [ ! -d "simple-sddm-2" ]; do
+    if git clone --depth 1 https://github.com/hoangthienclub/sddm-astronaut-theme.git; then
+      while [ ! -d "sddm-astronaut-theme" ]; do
         sleep 1
       done
 
@@ -85,8 +85,8 @@ while [ "$valid_input" != true ]; do
         echo -e "\e[1A\e[K${OK} - Directory '/usr/share/sddm/themes' created." 2>&1 | tee -a "$LOG"
       fi
 
-      sudo mv simple-sddm-2 /usr/share/sddm/themes/
-      echo -e "[Theme]\nCurrent=simple-sddm-2" | sudo tee "$sddm_conf_dir/theme.conf.user" &>> "$LOG"
+      sudo mv sddm-astronaut-theme /usr/share/sddm/themes/
+      echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee "$sddm_conf_dir/theme.conf.user" &>> "$LOG"
     else
       echo -e "\e[1A\e[K${ERROR} - Failed to clone the theme repository. Please check your internet connection" | tee -a "$LOG" >&2
     fi

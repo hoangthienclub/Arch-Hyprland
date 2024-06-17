@@ -165,8 +165,6 @@ ask_yes_no "-Install XDG-DESKTOP-PORTAL-HYPRLAND? (For proper Screen Share ie OB
 printf "\n"
 ask_yes_no "-Install zsh, oh-my-zsh & (Optional) pokemon-colorscripts?" zsh
 printf "\n"
-ask_yes_no "-Installing in a Asus ROG Laptops?" rog
-printf "\n"
 ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
@@ -226,10 +224,6 @@ if [ "$zsh" == "Y" ]; then
 fi
 
 execute_script "InputGroup.sh"
-
-if [ "$rog" == "Y" ]; then
-    execute_script "rog.sh"
-fi
 
 if [ "$dots" == "Y" ]; then
     execute_script "dotfiles.sh"
